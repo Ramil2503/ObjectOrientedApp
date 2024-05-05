@@ -18,6 +18,7 @@ public class ProductController {
     @GetMapping
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("productsincart", productService.getAllProductsInCart());
         return "home";
     }
 
@@ -26,7 +27,6 @@ public class ProductController {
         productService.addToShoppingCart(id, quantity);
         System.out.println(productService.getAllProductsInCart());
         model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("productsincart", productService.getAllProductsInCart());
-        return "home";
+        return "redirect:/";
     }
 }
