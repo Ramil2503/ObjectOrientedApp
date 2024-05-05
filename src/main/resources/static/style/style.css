@@ -2,3 +2,22 @@
     display: grid;
     grid-template-columns: 75% 25%;
 }
+
+body {
+    background-color: rgb(237, 237, 237) !important;
+}
+
+.product {
+    background-color: white;
+    border-radius: 20px 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 3fr;
+    height: 350px;
+    margin: 20px;
+}
+
+.product img {
+    width: 300px;
+    height: 350px;
+    object-fit: contain;
+}

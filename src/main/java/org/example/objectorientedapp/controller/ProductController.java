@@ -29,4 +29,11 @@ public class ProductController {
         model.addAttribute("products", productService.getAllProducts());
         return "redirect:/";
     }
+
+    @GetMapping("/shoppingcart")
+    public String viewShoppingCart(Model model) {
+        model.addAttribute("products", productService.getAllProductsInCart());
+        model.addAttribute("productsincart", productService.getAllProductsInCart());
+        return "shopping_cart";
+    }
 }
