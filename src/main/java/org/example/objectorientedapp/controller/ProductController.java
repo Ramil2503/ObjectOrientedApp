@@ -34,6 +34,7 @@ public class ProductController {
     public String viewShoppingCart(Model model) {
         model.addAttribute("products", productService.getAllProductsInCart());
         model.addAttribute("productsincart", productService.getAllProductsInCart());
+        model.addAttribute("total", productService.getTotal());
         return "shopping_cart";
     }
 }

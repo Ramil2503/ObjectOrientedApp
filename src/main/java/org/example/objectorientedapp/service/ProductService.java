@@ -26,4 +26,12 @@ public class ProductService {
         shoppingCart.save(product, quantity);
         System.out.println(shoppingCart.findAll());
     }
+
+    public double getTotal() {
+        double total = 0;
+        for (Map.Entry<Product, Integer> entry : shoppingCart.findAll().entrySet()) {
+            total += entry.getValue() * entry.getKey().getPrice();
+        }
+        return total;
+    }
 }
