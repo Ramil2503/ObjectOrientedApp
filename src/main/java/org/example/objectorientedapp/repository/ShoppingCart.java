@@ -24,6 +24,12 @@ public class ShoppingCart {
     }
 
     public Map<Product, Integer> findAll() {
-        return products;
+        Map<Product, Integer> result = new HashMap<>();
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            if (entry.getValue() > 0) {
+                result.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return result;
     }
 }

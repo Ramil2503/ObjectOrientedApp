@@ -25,7 +25,6 @@ public class ProductController {
     @PostMapping("addtocart/{id}")
     public String addToCart(@PathVariable Long id, @RequestParam int quantity,  Model model) {
         productService.addToShoppingCart(id, quantity);
-        System.out.println(productService.getAllProductsInCart());
         model.addAttribute("products", productService.getAllProducts());
         return "redirect:/";
     }

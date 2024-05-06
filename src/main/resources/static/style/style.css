@@ -2,13 +2,36 @@
     font-family: 'Butterfly Kids';
 }
 
+html, body {
+    height: 100%;
+}
+
 .grid {
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 5% 70% 25%;
+    min-height: 100%;
 }
 
 body {
     background-color: rgb(237, 237, 237) !important;
+}
+
+.side_panel {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    height: calc(100% - 20px);
+    margin: 10px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.container a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 
 .product {
@@ -48,4 +71,27 @@ body {
 button {
     background-color: black !important;
     color: white !important;
+    border-color: black !important;
+}
+
+.side_panel a {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: black !important;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.side_panel .active {
+    background-color: black;
+    color: white !important;
+}
+
+.side_panel .log-out {
+    margin-bottom: 10px;
+    margin-top: auto;
+    color: white !important;
+    background-color: red !important;
 }

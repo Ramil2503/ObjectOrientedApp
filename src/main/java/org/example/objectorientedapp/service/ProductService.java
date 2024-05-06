@@ -22,9 +22,7 @@ public class ProductService {
 
     public void addToShoppingCart(Long id, int quantity) {
         Product product = productRepository.findById(id).get();
-        System.out.println(product);
         shoppingCart.save(product, quantity);
-        System.out.println(shoppingCart.findAll());
     }
 
     public double getTotal() {
