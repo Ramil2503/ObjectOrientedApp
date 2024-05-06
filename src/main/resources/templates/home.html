@@ -25,7 +25,7 @@
 
         <div class="row mt-4">
             <!-- Используем Thymeleaf для перебора списка товаров -->
-            <div class="col-md-4 mb-4" th:each="product: ${products}">
+            <div class="col-md-4 mb-4 product_card" th:each="product: ${products}">
                 <div class="card">
                     <img th:src="'/' + ${product.getId()} + '.jpg'" class="card-img-top product-image"
                          alt="Product Image">
@@ -48,13 +48,15 @@
 
     <div class="ordered">
         <h2>Bag</h2>
-        <div class="col-md-4 mb-4" th:each="entry : ${productsincart}">
-            <!-- Accessing the product from the map entry -->
-            <div class="card_small">
-                <!-- Use entry.key to access the product -->
-                <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image" alt="Product Image">
-                <!-- Use entry.value to access the quantity -->
-<!--                <p>Quantity: <span th:text="${entry.value}"></span></p>-->
+        <div class="ordered_flex">
+            <div class="col-md-4 mb-4" th:each="entry : ${productsincart}">
+                <!-- Accessing the product from the map entry -->
+                <div class="card_small">
+                    <!-- Use entry.key to access the product -->
+                    <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image" alt="Product Image">
+                    <!-- Use entry.value to access the quantity -->
+                    <!--                <p>Quantity: <span th:text="${entry.value}"></span></p>-->
+                </div>
             </div>
         </div>
         <a href="/shoppingcart"><button class="btn btn-primary ms-2">View Shopping Cart</button></a>

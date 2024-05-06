@@ -13,9 +13,9 @@
 <body>
 <div class="grid">
     <div class="side_panel">
-        <a><i class='bx bx-menu' ></i></a>
-        <a href="/"><i class='bx bxs-store' ></i></a>
-        <a href="/shoppingcart" class="active"><i class='bx bxs-shopping-bag-alt' ></i></a>
+        <a><i class='bx bx-menu'></i></a>
+        <a href="/"><i class='bx bxs-store'></i></a>
+        <a href="/shoppingcart" class="active"><i class='bx bxs-shopping-bag-alt'></i></a>
         <a class="log-out"><i class='bx bx-log-out'></i></a>
     </div>
 
@@ -41,17 +41,19 @@
 
     <div class="ordered">
         <h2>Bag</h2>
-        <div class="col-md-4 mb-4" th:each="entry : ${productsincart}">
-            <!-- Accessing the product from the map entry -->
-            <div class="card_small">
-                <!-- Use entry.key to access the product -->
-                <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image"
-                     alt="Product Image">
-                <!-- Use entry.value to access the quantity -->
-                <p>Quantity: <span th:text="${entry.value}"></span></p>
+        <div class="ordered_flex">
+            <div class="col-md-4 mb-4" th:each="entry : ${productsincart}">
+                <!-- Accessing the product from the map entry -->
+                <div class="card_small">
+                    <!-- Use entry.key to access the product -->
+                    <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image"
+                         alt="Product Image">
+                    <!-- Use entry.value to access the quantity -->
+                    <p>Quantity: <span th:text="${entry.value}"></span></p>
+                </div>
             </div>
         </div>
-        <h3 th:text="${'Bag Total: ' + total}"></h3>
+        <h3 th:text="${'Bag Total: ' + total + '$'}"></h3>
         <a href="/shoppingcart">
             <button class="btn btn-primary ms-2">Checkout</button>
         </a>
