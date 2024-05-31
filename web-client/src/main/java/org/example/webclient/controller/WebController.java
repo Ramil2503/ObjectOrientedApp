@@ -21,11 +21,18 @@ public class WebController {
         return "home";
     }
 
-    @PostMapping("addtocart/{id}")
+    @PostMapping("/addtocart/{id}")
     public String addToCart(@PathVariable Long id, @RequestParam int quantity, Model model) {
         webService.addToShoppingCart(id, quantity);
         model.addAttribute("products", webService.getAllProducts());
         return "redirect:/";
+    }
+
+    @PostMapping("/addtocart_product-page/{id}")
+    public String addToCartFromProductPage(@PathVariable Long id, @RequestParam int quantity, Model model) {
+        webService.addToShoppingCart(id, quantity);
+        model.addAttribute("products", webService.getAllProducts());
+        return "redirect:/product/" + id;
     }
 
     @GetMapping("/shoppingcart")
@@ -36,5 +43,10 @@ public class WebController {
         return "shopping_cart";
     }
 
-
+    @GetMapping("product/{id}")
+    public String viewProduct(@PathVariable Long id, Model model) {
+        model.addAttribute("product", webService.getProduct(id));
+        model.addAttribute("productsincart", webService.getAllProductsInCart());
+        return "product_page";
+    }
 }

@@ -49,6 +49,17 @@ body {
     margin: 20px;
 }
 
+.product_product-page {
+    border-radius: 20px 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 3fr;
+    margin: 20px;
+}
+
+.product_product-page img {
+    border-radius: 15px;
+}
+
 .product img {
     width: 300px;
     height: 350px;
@@ -60,6 +71,17 @@ body {
     margin-top: 20px;
     display: grid;
     grid-template-rows: 5fr 1fr;
+}
+
+.product-body_product-page {
+    margin: 10px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.product-body-bottom_product-page {
+    margin: 30px;
 }
 
 .card_small, .card_small img {

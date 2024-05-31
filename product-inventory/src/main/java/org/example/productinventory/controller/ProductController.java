@@ -27,7 +27,7 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getAllProductsInCart());
     }
 
-    @PostMapping("addtocart/{id}/{quantity}")
+    @PostMapping("/addtocart/{id}/{quantity}")
     public ResponseEntity<Void> addToCart(@PathVariable Long id, @PathVariable int quantity) {
         productService.addToShoppingCart(id, quantity);
         return ResponseEntity.ok().build();
@@ -36,5 +36,10 @@ public class ProductController {
     @GetMapping("/get-total")
     public ResponseEntity<Double> getTotal() {
         return ResponseEntity.ok().body(productService.getTotal());
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(productService.getProduct(id));
     }
 }

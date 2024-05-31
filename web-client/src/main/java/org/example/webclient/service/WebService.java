@@ -28,7 +28,8 @@ public class WebService {
     public List<Product> getAllProducts() {
         RestTemplate template = new RestTemplate();
         ResponseEntity<List<Product>> response = template.exchange(storageApi.getBasicUri(),
-                HttpMethod.GET, null, new ParameterizedTypeReference<>(){});
+                HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+                });
         return response.getBody();
     }
 
@@ -39,7 +40,8 @@ public class WebService {
                 storageApi.getBasicUri() + "/products-in-cart",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Map<String, Integer>>() {}
+                new ParameterizedTypeReference<Map<String, Integer>>() {
+                }
         );
 
         Map<String, Integer> productsInCartAsString = response.getBody();
@@ -81,6 +83,16 @@ public class WebService {
                 HttpMethod.GET,
                 null,
                 Double.class);
+        return response.getBody();
+    }
+
+    public Product getProduct(long id) {
+        RestTemplate template = new RestTemplate();
+        ResponseEntity<Product> response = template.exchange(
+                storageApi.getBasicUri() + "product/" + id,
+                HttpMethod.GET,
+                null,
+                Product.class);
         return response.getBody();
     }
 }

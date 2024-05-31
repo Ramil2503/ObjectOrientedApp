@@ -56,4 +56,7 @@ public class ProductService {
         }
         return total;
     }
+
+    @TrackUserAction
+    public Product getProduct(Long id) { return productRepository.findById(id).get(); }
 }
