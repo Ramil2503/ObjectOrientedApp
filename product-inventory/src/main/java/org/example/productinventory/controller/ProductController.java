@@ -1,5 +1,7 @@
 package org.example.productinventory.controller;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import lombok.AllArgsConstructor;
 import org.example.productinventory.model.Product;
 import org.example.productinventory.service.ProductService;
@@ -17,6 +19,8 @@ import java.util.Map;
 public class ProductController {
     ProductService productService;
 
+    private final Counter addToCartCounter = Metrics.counter("add-to-cart");
+
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok().body(productService.getAllProducts());
@@ -30,6 +34,7 @@ public class ProductController {
     @PostMapping("/addtocart/{id}/{quantity}")
     public ResponseEntity<Void> addToCart(@PathVariable Long id, @PathVariable int quantity) {
         productService.addToShoppingCart(id, quantity);
+        addToCartCounter.increment();
         return ResponseEntity.ok().build();
     }
 
