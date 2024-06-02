@@ -49,4 +49,14 @@ public class WebController {
         model.addAttribute("productsincart", webService.getAllProductsInCart());
         return "product_page";
     }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(Model model) {
+        return "checkout";
+    }
 }

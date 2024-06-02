@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Abracadabra</title>
@@ -17,7 +17,14 @@
         <a><i class='bx bx-menu'></i></a>
         <a href="/" class="active"><i class='bx bxs-store'></i></a>
         <a href="/shoppingcart"><i class='bx bxs-shopping-bag-alt'></i></a>
-        <a class="log-out"><i class='bx bx-log-out'></i></a>
+        <a sec:authorize="isAuthenticated()">
+            <a class="log-out">
+                <form action="/logout" method="get">
+                    <input type="submit" value="">
+                    <i class='bx bx-log-out'></i>
+                </form>
+            </a>
+        </a>
     </div>
 
     <div class="container mt-5">
@@ -61,7 +68,7 @@
                     <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image"
                          alt="Product Image">
                     <!-- Use entry.value to access the quantity -->
-                    <!--                <p>Quantity: <span th:text="${entry.value}"></span></p>-->
+                    <p>Quantity: <span th:text="${entry.value}"></span></p>
                 </div>
             </div>
         </div>

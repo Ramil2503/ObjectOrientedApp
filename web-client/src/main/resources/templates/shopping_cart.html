@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
@@ -16,26 +16,35 @@
         <a><i class='bx bx-menu'></i></a>
         <a href="/"><i class='bx bxs-store'></i></a>
         <a href="/shoppingcart" class="active"><i class='bx bxs-shopping-bag-alt'></i></a>
-        <a class="log-out"><i class='bx bx-log-out'></i></a>
+        <a sec:authorize="isAuthenticated()">
+            <a class="log-out">
+                <form action="/logout" method="get">
+                    <input type="submit" value="">
+                    <i class='bx bx-log-out'></i>
+                </form>
+            </a>
+        </a>
     </div>
 
     <div class="container mt-5">
         <a href="/"><h1 class="text-center butterfly">Abracadabra</h1></a>
         <h2>Shopping Cart</h2>
         <div th:each="product: ${products}">
-            <div class="product">
-                <img th:src="'/' + ${product.key.getId()} + '.jpg'" class="card-img-top product-image"
-                     alt="Product Image">
-                <div class="product-body">
-                    <div>
-                        <h2 class="card-title" th:text="${product.key.name}"></h2>
-                        <h5 class="card-title" th:text="${product.key.description}"></h5>
-                    </div>
-                    <div>
-                        <h4 class="card-title" th:text="${product.key.price + '$' + ' x ' + product.value}"></h4>
+            <a th:href="@{/product/{id}(id=${product.key.getId()})}">
+                <div class="product">
+                    <img th:src="'/' + ${product.key.getId()} + '.jpg'" class="card-img-top product-image"
+                         alt="Product Image">
+                    <div class="product-body">
+                        <div>
+                            <h2 class="card-title" th:text="${product.key.getName()}"></h2>
+                            <h5 class="card-title" th:text="${product.key.getDescription()}"></h5>
+                        </div>
+                        <div>
+                            <h4 class="card-title" th:text="${product.key.getPrice() + '$' + ' x ' + product.value}"></h4>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -54,7 +63,7 @@
             </div>
         </div>
         <h3 th:text="${'Bag Total: ' + total + '$'}"></h3>
-        <a href="/shoppingcart">
+        <a href="/checkout">
             <button class="btn btn-primary ms-2">Checkout</button>
         </a>
     </div>

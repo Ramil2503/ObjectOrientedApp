@@ -124,6 +124,18 @@ button {
     background-color: red !important;
 }
 
+.log-out input {
+    background: transparent;
+    border: none;
+    z-index: 2;
+    position: absolute;
+}
+
+.log-out .bx-log-out {
+    z-index: 1;
+    pointer-events: none;
+}
+
 .ordered_flex {
     display: flex;
     flex-direction: row;
