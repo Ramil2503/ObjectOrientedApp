@@ -57,6 +57,19 @@ public class WebController {
 
     @GetMapping("/checkout")
     public String checkout(Model model) {
+        model.addAttribute("products", webService.getAllProductsInCart());
+        model.addAttribute("productsincart", webService.getAllProductsInCart());
+        model.addAttribute("total", webService.getTotal());
         return "checkout";
+    }
+
+    @GetMapping("/confirm")
+    public String confirm(@RequestParam("cardNumber") String cardNumber,
+                          @RequestParam("email") String email,
+                          @RequestParam("name") String name,
+                          @RequestParam("surname") String surname,
+                          @RequestParam("ccv") String ccv,
+                          Model model) {
+        return "confirm";
     }
 }
