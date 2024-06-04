@@ -103,6 +103,20 @@ public class WebService {
         return response.getBody();
     }
 
+    public void clearShoppingCart() {
+        RestTemplate template = new RestTemplate();
+
+        String userName = getCurrentUserName();
+        String url = String.format("%s/%s/clear-shopping-cart", storageApi.getBasicUri(), userName);
+
+        template.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                Void.class
+        );
+    }
+
     private String getCurrentUserName() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {

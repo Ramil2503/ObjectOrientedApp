@@ -49,4 +49,10 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok().body(productService.getProduct(id));
     }
+
+    @GetMapping("/{username}/clear-shopping-cart")
+    public ResponseEntity<Void> clearShoppingCart(@PathVariable String username) {
+        productService.clearShoppingCart(username);
+        return ResponseEntity.ok().build();
+    }
 }

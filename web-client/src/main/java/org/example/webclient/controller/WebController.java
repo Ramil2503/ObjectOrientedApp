@@ -70,6 +70,7 @@ public class WebController {
                           @RequestParam("surname") String surname,
                           @RequestParam("ccv") String ccv,
                           Model model) {
+        webService.clearShoppingCart();
         return "confirm";
     }
 }

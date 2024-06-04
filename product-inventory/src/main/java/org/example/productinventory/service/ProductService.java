@@ -59,4 +59,9 @@ public class ProductService {
 
     @TrackUserAction
     public Product getProduct(Long id) { return productRepository.findById(id).get(); }
+
+    @TrackUserAction
+    public void clearShoppingCart(String userName) {
+        shoppingCart.clear(userName);
+    }
 }
