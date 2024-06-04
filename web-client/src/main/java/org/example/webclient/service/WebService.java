@@ -9,6 +9,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,8 +38,10 @@ public class WebService {
 
     public Map<Product, Integer> getAllProductsInCart() {
         RestTemplate template = new RestTemplate();
+        String userName = getCurrentUserName();
+        String url = String.format("%s/%s/products-in-cart", storageApi.getBasicUri(), userName);
         ResponseEntity<Map<String, Integer>> response = template.exchange(
-                storageApi.getBasicUri() + "/products-in-cart",
+                url,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Map<String, Integer>>() {
@@ -67,7 +71,8 @@ public class WebService {
         headers.add("Content-Type", "application/json");
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
-        String url = String.format("%s/addtocart/%d/%d", storageApi.getBasicUri(), id, quantity);
+        String userName = getCurrentUserName();
+        String url = String.format("%s/addtocart/%s/%d/%d", storageApi.getBasicUri(), userName, id, quantity);
 
         ResponseEntity<String> response = restTemplate.exchange(
                 url,
@@ -78,8 +83,10 @@ public class WebService {
 
     public double getTotal() {
         RestTemplate restTemplate = new RestTemplate();
+        String userName = getCurrentUserName();
+        String url = String.format("%s/%s/get-total", storageApi.getBasicUri(), userName);
         ResponseEntity<Double> response = restTemplate.exchange(
-                storageApi.getBasicUri() + "/get-total",
+                url,
                 HttpMethod.GET,
                 null,
                 Double.class);
@@ -94,5 +101,14 @@ public class WebService {
                 null,
                 Product.class);
         return response.getBody();
+    }
+
+    private String getCurrentUserName() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        } else {
+            return principal.toString();
+        }
     }
 }

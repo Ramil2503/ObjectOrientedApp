@@ -20,12 +20,12 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/style/**", "/favicon.ico", "/", "*.jpg", "/addtocart/**", "/addtocart_product-page/**", "/shoppingcart", "/product/**", "/logout").permitAll()
+                        .requestMatchers("/style/**", "/favicon.ico", "/", "*.jpg","/shoppingcart", "/product/**", "/logout").permitAll()
                         .requestMatchers("/admin").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/", true)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")

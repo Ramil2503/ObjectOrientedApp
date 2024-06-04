@@ -27,22 +27,22 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getAllProducts());
     }
 
-    @GetMapping("/products-in-cart")
-    public ResponseEntity<Map<String, Integer>> getAllProductsInCart() {
-        return ResponseEntity.ok().body(productService.getAllProductsInCart());
+    @GetMapping("/{username}/products-in-cart")
+    public ResponseEntity<Map<String, Integer>> getAllProductsInCart(@PathVariable String username) {
+        return ResponseEntity.ok().body(productService.getAllProductsInCart(username));
     }
 
-    @PostMapping("/addtocart/{id}/{quantity}")
-    public ResponseEntity<Void> addToCart(@PathVariable Long id, @PathVariable int quantity) {
-        productService.addToShoppingCart(id, quantity);
+    @PostMapping("/addtocart/{username}/{id}/{quantity}")
+    public ResponseEntity<Void> addToCart(@PathVariable String username, @PathVariable Long id, @PathVariable int quantity) {
+        productService.addToShoppingCart(username, id, quantity);
         addToCartCounter.increment();
         fileGateway.writeToFile("products.txt", productService.getProduct(id).getName() + "; QUANTITY ADDED TO CART: " + quantity);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/get-total")
-    public ResponseEntity<Double> getTotal() {
-        return ResponseEntity.ok().body(productService.getTotal());
+    @GetMapping("/{username}/get-total")
+    public ResponseEntity<Double> getTotal(@PathVariable String username) {
+        return ResponseEntity.ok().body(productService.getTotal(username));
     }
 
     @GetMapping("/product/{id}")

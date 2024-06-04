@@ -23,8 +23,8 @@ public class ProductService {
     public List<Product> getAllProducts() { return productRepository.findAll(); }
 
     @TrackUserAction
-    public Map<String, Integer> getAllProductsInCart() {
-        Map<Product, Integer> originalProductsInCart = shoppingCart.findAll();
+    public Map<String, Integer> getAllProductsInCart(String userName) {
+        Map<Product, Integer> originalProductsInCart = shoppingCart.findAll(userName);
 
         ObjectMapper mapper = new ObjectMapper();
 
@@ -43,15 +43,15 @@ public class ProductService {
     }
 
     @TrackUserAction
-    public void addToShoppingCart(Long id, int quantity) {
+    public void addToShoppingCart(String userName, Long id, int quantity) {
         Product product = productRepository.findById(id).get();
-        shoppingCart.save(product, quantity);
+        shoppingCart.save(userName, product, quantity);
     }
 
     @TrackUserAction
-    public double getTotal() {
+    public double getTotal(String userName) {
         double total = 0;
-        for (Map.Entry<Product, Integer> entry : shoppingCart.findAll().entrySet()) {
+        for (Map.Entry<Product, Integer> entry : shoppingCart.findAll(userName).entrySet()) {
             total += entry.getValue() * entry.getKey().getPrice();
         }
         return total;
