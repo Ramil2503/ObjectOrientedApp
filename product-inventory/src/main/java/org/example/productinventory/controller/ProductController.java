@@ -4,6 +4,7 @@ import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
 import lombok.AllArgsConstructor;
 import org.example.productinventory.model.Product;
+import org.example.productinventory.service.FileGateway;
 import org.example.productinventory.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class ProductController {
     ProductService productService;
-
+    private final FileGateway fileGateway;
     private final Counter addToCartCounter = Metrics.counter("add-to-cart");
 
     @GetMapping
@@ -35,6 +36,7 @@ public class ProductController {
     public ResponseEntity<Void> addToCart(@PathVariable Long id, @PathVariable int quantity) {
         productService.addToShoppingCart(id, quantity);
         addToCartCounter.increment();
+        fileGateway.writeToFile("products.txt", productService.getProduct(id).getName() + "; QUANTITY ADDED TO CART: " + quantity);
         return ResponseEntity.ok().build();
     }
 
