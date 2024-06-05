@@ -19,17 +19,14 @@ public class WebController {
     }
 
     @PostMapping("/addtocart/{id}")
-    public String addToCart(@PathVariable Long id, @RequestParam int quantity, Model model) {
+    public String addToCart(@PathVariable Long id, @RequestParam int quantity, @RequestHeader(value = "Referer", required = false) String referer, Model model) {
         webService.addToShoppingCart(id, quantity);
         model.addAttribute("products", webService.getAllProducts());
-        return "redirect:/";
-    }
-
-    @PostMapping("/addtocart_product-page/{id}")
-    public String addToCartFromProductPage(@PathVariable Long id, @RequestParam int quantity, Model model) {
-        webService.addToShoppingCart(id, quantity);
-        model.addAttribute("products", webService.getAllProducts());
-        return "redirect:/product/" + id;
+        if (referer != null) {
+            return "redirect:" + referer;
+        } else {
+            return "redirect:/"; // Fallback if the Referer header is not present
+        }
     }
 
     @GetMapping("/shoppingcart")
