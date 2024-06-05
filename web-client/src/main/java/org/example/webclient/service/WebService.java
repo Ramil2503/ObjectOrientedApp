@@ -117,6 +117,20 @@ public class WebService {
         );
     }
 
+    public void deleteProductShoppingCart(long id) {
+        RestTemplate template = new RestTemplate();
+
+        String userName = getCurrentUserName();
+        String url = String.format("%s/%s/delete-product-shopping-cart/%d", storageApi.getBasicUri(), userName, id);
+
+        template.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                Void.class
+        );
+    }
+
     private String getCurrentUserName() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {

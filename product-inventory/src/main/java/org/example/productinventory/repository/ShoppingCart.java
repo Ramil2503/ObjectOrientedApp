@@ -41,4 +41,11 @@ public class ShoppingCart {
     public void clear(String userName) {
         userCarts.remove(userName);
     }
+
+    public void deleteProduct(String userName, Long productId) {
+        Map<Product, Integer> userCart = userCarts.get(userName);
+        if (userCart != null) {
+            userCart.entrySet().removeIf(entry -> entry.getKey().getId().equals(productId));
+        }
+    }
 }

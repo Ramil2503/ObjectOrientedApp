@@ -69,6 +69,7 @@
                     <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image"
                          alt="Product Image">
                     <!-- Use entry.value to access the quantity -->
+                    <a class="delete-button-ordered" th:href="@{/delete-product-shopping-cart/{id}(id=${entry.key.getId()})}"><i class='bx bx-x-circle'></i></a>
                     <p>Quantity: <span th:text="${entry.value}"></span></p>
                 </div>
             </div>

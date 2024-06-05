@@ -64,4 +64,9 @@ public class ProductService {
     public void clearShoppingCart(String userName) {
         shoppingCart.clear(userName);
     }
+
+    @TrackUserAction
+    public void deleteProductShoppingCart(String userName, Long id) {
+        shoppingCart.deleteProduct(userName, id);
+    }
 }

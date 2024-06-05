@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import org.example.webclient.service.WebService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -72,5 +69,15 @@ public class WebController {
                           Model model) {
         webService.clearShoppingCart();
         return "confirm";
+    }
+
+    @GetMapping("/delete-product-shopping-cart/{id}")
+    public String deleteProductShoppingCart(@PathVariable Long id, @RequestHeader(value = "Referer", required = false) String referer) {
+        webService.deleteProductShoppingCart(id);
+        if (referer != null) {
+            return "redirect:" + referer;
+        } else {
+            return "redirect:/"; // Fallback if the Referer header is not present
+        }
     }
 }

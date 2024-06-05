@@ -55,4 +55,10 @@ public class ProductController {
         productService.clearShoppingCart(username);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/{username}/delete-product-shopping-cart/{id}")
+    public ResponseEntity<Void> deleteProductShoppingCart(@PathVariable String username, @PathVariable Long id) {
+        productService.deleteProductShoppingCart(username, id);
+        return ResponseEntity.ok().build();
+    }
 }

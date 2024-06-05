@@ -145,3 +145,20 @@ button {
 .ordered_flex .col-md-4 {
     margin: 10px;
 }
+
+.delete-button-ordered {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 24px;
+}
+
+.card_small:hover .delete-button-ordered {
+    display: block;
+}
+
+.card_small {
+    position: relative;
+}

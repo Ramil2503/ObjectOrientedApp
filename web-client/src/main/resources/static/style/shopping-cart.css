@@ -1,0 +1,12 @@
+.product-delete-grid {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+
+.delete-button-shopping-cart {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: red !important;
+}
