@@ -10,6 +10,59 @@ html, body {
     display: grid;
     grid-template-columns: 5% 70% 25%;
     min-height: 100%;
+    transition: grid-template-columns 0.5s ease-in-out;
+}
+
+@media (max-width: 1199px) {
+    .company_name {
+        font-size: 60px;
+    }
+    .side_panel {
+        background-color: rgb(237, 237, 237) !important;
+    }
+    .bx-menu {
+        font-size: 50px;
+    }
+    .ordered {
+        display: none;
+    }
+    .grid {
+        grid-template-columns: 7% 86%;
+    }
+    .side_panel_button {
+        font-size: 40px !important;
+    }
+    .side_panel_button {
+        display: none;
+    }
+    .log-out {
+        font-size: 45px !important;
+        display: none;
+    }
+    .sidebar_open {
+        margin-top: 20px !important;
+        margin-left: 20px !important;
+    }
+    .sidebar_close {
+        margin-right: 95% !important;
+        font-size: 70px !important;
+    }
+    .ordered_flex {
+        justify-content: center;
+    }
+    .ordered_mobile h2 {
+        font-size: 60px !important;
+    }
+    .ordered_mobile a button {
+        font-size: 40px !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mt-4 .col-md-4 {
+        flex: 0 0 auto !important;
+        width: 50% !important;
+    }
 }
 
 body {
@@ -27,6 +80,27 @@ body {
     text-align: center;
     padding-top: 10px;
     top: 10px;
+}
+
+.side_panel_button {
+    text-decoration: none;
+}
+
+.side_panel_button_text {
+    display: none;
+}
+
+.sidebar_mobile_view-checkout {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar_close {
+    display: none;
+}
+
+.ordered_mobile {
+    display: none;
 }
 
 .product_card .card img {

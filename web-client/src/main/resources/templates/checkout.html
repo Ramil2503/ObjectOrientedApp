@@ -12,13 +12,35 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
-<div class="grid_checkout">
-    <div class="side_panel">
-        <a><i class='bx bx-menu'></i></a>
-        <a href="/"><i class='bx bxs-store'></i></a>
-        <a href="/shoppingcart" class="active"><i class='bx bxs-shopping-bag-alt'></i></a>
-        <a sec:authorize="isAuthenticated()">
-            <a class="log-out">
+<div id="grid_checkout" class="grid_checkout">
+    <div class="side_panel" id="side_panel">
+        <a id="sidebar_open" class="sidebar_open" onclick="open_sidebar()"><i class='bx bx-menu'></i></a>
+        <a id="sidebar_close" class="sidebar_close" onclick="close_sidebar()"><i class='bx bx-x'></i></a>
+        <a href="/" id="side_panel_button1" class="active side_panel_button"><i class='bx bxs-store'></i><p class="side_panel_button_text" id="side_panel_button_text">Home</p></a>
+        <a href="/shoppingcart" id="side_panel_button2" class="side_panel_button"><i class='bx bxs-shopping-bag-alt'></i><p class="side_panel_button_text" id="side_panel_button_text2">Shopping Cart</p></a>
+        <div id="ordered_mobile" class="ordered_mobile">
+            <h2>Bag</h2>
+            <div class="ordered_flex">
+                <div class="col-md-4 mb-4" th:each="entry : ${productsincart}">
+                    <!-- Accessing the product from the map entry -->
+                    <div class="card_small">
+                        <!-- Use entry.key to access the product -->
+                        <img th:src="'/' + ${entry.key.getId()} + '.jpg'" class="card-img-top product-image"
+                             alt="Product Image">
+                        <!-- Use entry.value to access the quantity -->
+                        <a class="delete-button-ordered" th:href="@{/delete-product-shopping-cart/{id}(id=${entry.key.getId()})}"><i class='bx bx-x-circle'></i></a>
+                        <p>Quantity: <span th:text="${entry.value}"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar_mobile_view-checkout">
+                <a href="/checkout">
+                    <button class="btn btn-primary ms-2">Checkout</button>
+                </a>
+            </div>
+        </div>
+        <a sec:authorize="isAuthenticated()" class="side_panel_button">
+            <a id="log-out" class="log-out">
                 <form action="/logout" method="get">
                     <input type="submit" value="">
                     <i class='bx bx-log-out'></i>
@@ -27,8 +49,8 @@
         </a>
     </div>
 
-    <div class="container mt-5">
-        <a href="/"><h1 class="text-center butterfly">Abracadabra</h1></a>
+    <div id="container" class="container mt-5">
+        <a href="/"><h1 class="company_name text-center butterfly">Abracadabra</h1></a>
         <!-- Checkout Form -->
         <div class="checkout_form">
             <form action="/confirm" method="get" class="mt-5">
@@ -104,4 +126,5 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" th:src="@{/js/sidebar_checkout.js}"></script>
 </html>
