@@ -20,7 +20,9 @@ public class WebController {
 
     @PostMapping("/addtocart/{id}")
     public String addToCart(@PathVariable Long id, @RequestParam int quantity, @RequestHeader(value = "Referer", required = false) String referer, Model model) {
-        webService.addToShoppingCart(id, quantity);
+        if (quantity != 0) {
+            webService.addToShoppingCart(id, quantity);
+        }
         model.addAttribute("products", webService.getAllProducts());
         if (referer != null) {
             return "redirect:" + referer;
