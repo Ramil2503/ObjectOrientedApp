@@ -22,3 +22,17 @@ values ('MacBook Pro 14', 'Lorem ipsum dolor sit amet, consectetur adipiscing el
 
 ', 2499.00, 3)
 ;
+
+-- Inserting orders
+insert into "orders" (user_name) values ('user');
+insert into "orders" (user_name) values ('jane_smith');
+insert into "orders" (user_name) values ('alice_wonderland');
+
+-- Inserting order items
+-- Replace the product IDs and quantities with actual existing products and desired quantities
+insert into order_item (order_id, product_id, quantity)
+values
+    (1, 1, 1), -- Order for john_doe: MacBook Pro 14, quantity 1
+    (1, 3, 2), -- Order for john_doe: iPhone 14 Pro, quantity 2
+    (2, 2, 1), -- Order for jane_smith: Samsung S22+, quantity 1
+    (3, 4, 1); -- Order for alice_wonderland: iPhone 15 Pro Max, quantity 1

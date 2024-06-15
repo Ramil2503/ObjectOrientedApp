@@ -4,8 +4,10 @@ import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
 import lombok.AllArgsConstructor;
 import org.example.productinventory.model.Product;
+import org.example.productinventory.service.OrderService;
 import org.example.productinventory.service.FileGateway;
 import org.example.productinventory.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class ProductController {
     ProductService productService;
+    @Autowired
+    OrderService orderService;
     private final FileGateway fileGateway;
     private final Counter addToCartCounter = Metrics.counter("add-to-cart");
 
@@ -59,6 +63,12 @@ public class ProductController {
     @GetMapping("/{username}/delete-product-shopping-cart/{id}")
     public ResponseEntity<Void> deleteProductShoppingCart(@PathVariable String username, @PathVariable Long id) {
         productService.deleteProductShoppingCart(username, id);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<Void> test() {
+        System.out.println(orderService.findAll("user"));
         return ResponseEntity.ok().build();
     }
 }
