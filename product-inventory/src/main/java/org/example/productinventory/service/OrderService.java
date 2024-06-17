@@ -7,11 +7,13 @@ import org.example.productinventory.model.Product;
 import org.example.productinventory.repository.OrderItemRepository;
 import org.example.productinventory.repository.OrderRepository;
 import org.example.productinventory.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -43,7 +45,25 @@ public class OrderService {
     }
 
     @Transactional
-    public List<OrderItem> findAll(String userName) {
+    public Map<String, Map<Product, Integer>> getAllOrders() {
+        List<Orders> allOrders = orderRepository.findAll();
+        Map<String, Map<Product, Integer>> result = new HashMap<>();
+
+        for (Orders orders : allOrders) {
+            Map<Product, Integer> productQuantityMap = new HashMap<>();
+            for (OrderItem item : orders.getItems()) {
+                Product product = item.getProduct();
+                int quantity = item.getQuantity();
+                productQuantityMap.put(product, quantity);
+            }
+            result.put(orders.getUserName(), productQuantityMap);
+        }
+
+        return result;
+    }
+
+    @Transactional
+    public List<OrderItem> findAllOrdersOfUser(String userName) {
         Orders orders = orderRepository.findByUserName(userName);
         if (orders != null) {
             // Initialize the collection

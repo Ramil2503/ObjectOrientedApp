@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 5% 90% 5%;
     min-height: 100%;
+    transition: grid-template-columns 0.5s ease-in-out;
 }
 
 .checkout_form {

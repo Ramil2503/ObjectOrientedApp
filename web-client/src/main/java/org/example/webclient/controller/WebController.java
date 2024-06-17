@@ -46,11 +46,6 @@ public class WebController {
         return "product_page";
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        return "admin";
-    }
-
     @GetMapping("/checkout")
     public String checkout(Model model) {
         model.addAttribute("products", webService.getAllProductsInCart());
@@ -66,7 +61,7 @@ public class WebController {
                           @RequestParam("surname") String surname,
                           @RequestParam("ccv") String ccv,
                           Model model) {
-        webService.clearShoppingCart();
+        webService.createOrder();
         return "confirm";
     }
 

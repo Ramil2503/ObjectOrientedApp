@@ -16,8 +16,8 @@
     <div class="side_panel" id="side_panel">
         <a id="sidebar_open" class="sidebar_open" onclick="open_sidebar()"><i class='bx bx-menu'></i></a>
         <a id="sidebar_close" class="sidebar_close" onclick="close_sidebar()"><i class='bx bx-x'></i></a>
-        <a href="/admin/products" id="side_panel_button1" class="active side_panel_button"><i class='bx bxs-edit-alt'></i><p class="side_panel_button_text" id="side_panel_button_text">Products</p></a>
-        <a href="/admin/orders" id="side_panel_button2" class="side_panel_button"><i class='bx bx-objects-horizontal-left'></i><p class="side_panel_button_text" id="side_panel_button_text2">Orders</p></a>
+        <a href="/admin/products" id="side_panel_button1" class="side_panel_button"><i class='bx bxs-edit-alt'></i><p class="side_panel_button_text" id="side_panel_button_text">Products</p></a>
+        <a href="/admin/orders" id="side_panel_button2" class="active side_panel_button"><i class='bx bx-objects-horizontal-left'></i><p class="side_panel_button_text" id="side_panel_button_text2">Orders</p></a>
         <a sec:authorize="isAuthenticated()" class="side_panel_button">
             <a id="log-out" class="log-out">
                 <form action="/logout" method="get">

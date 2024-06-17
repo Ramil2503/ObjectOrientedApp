@@ -43,6 +43,11 @@ public class ProductService {
     }
 
     @TrackUserAction
+    public Map<Product, Integer> getAllProductsInCartInProductFormat(String userName) {
+        return shoppingCart.findAll(userName);
+    }
+
+    @TrackUserAction
     public void addToShoppingCart(String userName, Long id, int quantity) {
         Product product = productRepository.findById(id).get();
         shoppingCart.save(userName, product, quantity);

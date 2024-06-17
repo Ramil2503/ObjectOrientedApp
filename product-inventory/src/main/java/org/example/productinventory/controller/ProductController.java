@@ -68,7 +68,7 @@ public class ProductController {
 
     @GetMapping("/test")
     public ResponseEntity<Void> test() {
-        System.out.println(orderService.findAll("user"));
+        System.out.println(orderService.findAllOrdersOfUser("ramil"));
         return ResponseEntity.ok().build();
     }
 }

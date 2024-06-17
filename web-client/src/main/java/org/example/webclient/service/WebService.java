@@ -103,6 +103,21 @@ public class WebService {
         return response.getBody();
     }
 
+    public void createOrder() {
+        RestTemplate template = new RestTemplate();
+
+        String userName = getCurrentUserName();
+        String url = String.format("%s/orders/create-order/%s", storageApi.getBasicUri(), userName);
+
+        template.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                Void.class
+        );
+        clearShoppingCart();
+    }
+
     public void clearShoppingCart() {
         RestTemplate template = new RestTemplate();
 
