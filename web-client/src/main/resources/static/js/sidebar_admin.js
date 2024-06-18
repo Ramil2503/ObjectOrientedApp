@@ -11,7 +11,6 @@ function open_sidebar() {
     if (mediaQuery.matches) {
         document.getElementById("grid_admin").style.gridTemplateColumns = "100%"
         document.getElementById("container").style.display = "none"
-        document.getElementById("ordered_mobile").style.display = "block"
         document.getElementById("side_panel_button1").style.display = "block"
         document.getElementById("side_panel_button2").style.display = "block"
         document.getElementById("log-out").style.display = "block"
@@ -33,7 +32,6 @@ function close_sidebar() {
     if (mediaQuery.matches) {
         document.getElementById("grid_admin").style.gridTemplateColumns = "5% 90% 5%"
         document.getElementById("container").style.display = "block"
-        document.getElementById("ordered_mobile").style.display = "none"
         document.getElementById("side_panel_button1").style.display = "none"
         document.getElementById("side_panel_button2").style.display = "none"
         document.getElementById("log-out").style.display = "none"

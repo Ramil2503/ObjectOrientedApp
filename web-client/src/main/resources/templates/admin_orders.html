@@ -32,6 +32,19 @@
         <a href="/admin"><h1 class="company_name text-center butterfly">Abracadabra</h1></a>
         <a href="/admin"><h3>admin panel</h3></a>
 
+        <div class="row mt-4">
+            <!-- Используем Thymeleaf для перебора списка товаров -->
+            <div class="mb-4 product_card" th:each="order: ${orders}">
+                <div class="card">
+                    <div class="card-body">
+                        <a>
+                            <h5 class="card-title text-center admin_orders-customer_name" th:text="${order.key}"></h5>
+                            <h5 class="card-title text-center admin_orders-products_list" th:text="${order.value}"></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -42,10 +55,5 @@
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
         crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/sidebar_admin.js}"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        open_sidebar();
-    });
-</script>
 </body>
 </html>

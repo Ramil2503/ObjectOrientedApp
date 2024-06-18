@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -45,18 +46,15 @@ public class OrderService {
     }
 
     @Transactional
-    public Map<String, Map<Product, Integer>> getAllOrders() {
+    public Map<String, String> getAllOrders() {
         List<Orders> allOrders = orderRepository.findAll();
-        Map<String, Map<Product, Integer>> result = new HashMap<>();
+        Map<String, String> result = new HashMap<>();
 
-        for (Orders orders : allOrders) {
-            Map<Product, Integer> productQuantityMap = new HashMap<>();
-            for (OrderItem item : orders.getItems()) {
-                Product product = item.getProduct();
-                int quantity = item.getQuantity();
-                productQuantityMap.put(product, quantity);
-            }
-            result.put(orders.getUserName(), productQuantityMap);
+        for (Orders order : allOrders) {
+            String productsSummary = order.getItems().stream()
+                    .map(item -> item.getProduct().getName() + " x " + item.getQuantity())
+                    .collect(Collectors.joining(", "));
+            result.put(order.getUserName(), productsSummary);
         }
 
         return result;

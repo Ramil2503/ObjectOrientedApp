@@ -1,8 +1,10 @@
 package org.example.webclient.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.webclient.service.AdminService;
 import org.example.webclient.service.WebService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 @RequestMapping("/admin")
 public class AdminController {
-    private final WebService webService;
+    private final AdminService adminService;
 
     @GetMapping
     public String adminHomePage() {
@@ -23,7 +25,8 @@ public class AdminController {
     }
 
     @GetMapping("/orders")
-    public String ordersPage() {
+    public String ordersPage(Model model) {
+        model.addAttribute("orders", adminService.getAllOrders());
         return "admin_orders";
     }
 }

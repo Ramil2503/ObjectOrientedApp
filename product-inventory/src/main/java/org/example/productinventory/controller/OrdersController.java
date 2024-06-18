@@ -32,4 +32,9 @@ public class OrdersController {
 
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/get-all-orders")
+    public ResponseEntity<Map<String, String>> getAllOrders() {
+        return ResponseEntity.ok().body(orderService.getAllOrders());
+    }
 }
