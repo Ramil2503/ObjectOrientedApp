@@ -51,7 +51,7 @@
 
     <div id="container" class="container mt-5">
         <a href="/"><h1 class="company_name text-center butterfly">Abracadabra</h1></a>
-        <h2>Shopping Cart</h2>
+        <h2 class="header_shopping-cart">Shopping Cart</h2>
         <div class="product-delete-grid" th:each="product: ${products}">
             <a th:href="@{/product/{id}(id=${product.key.getId()})}">
                 <div class="product">
@@ -71,9 +71,9 @@
             <a class="delete-button-shopping-cart" th:href="@{/delete-product-shopping-cart/{id}(id=${product.key.getId()})}"><i class='bx bx-x-circle'></i></a>
         </div>
         <div>
-            <h3 th:text="${'Bag Total: ' + total + '$'}"></h3>
+            <h3 class="bag-total_shopping-cart" th:text="${'Bag Total: ' + total + '$'}"></h3>
             <a href="/checkout">
-                <button class="btn btn-primary ms-2">Checkout</button>
+                <button class="btn btn-primary ms-2 checkout-button_shopping-cart">Checkout</button>
             </a>
         </div>
     </div>

@@ -63,11 +63,11 @@
                     </a>
                     <div class="card-body">
                         <a th:href="@{/product/{id}(id=${product.getId()})}">
-                            <h5 class="card-title text-center" th:text="${product.name}"></h5>
-                            <h5 class="card-title text-center" th:text="${product.price + '$'}"></h5>
+                            <h5 class="card-title text-center product-name" th:text="${product.name}"></h5>
+                            <h5 class="card-title text-center product-price" th:text="${product.price + '$'}"></h5>
                         </a>
                         <!-- Форма для ввода количества товара и кнопка "Купить" -->
-                        <form th:action="@{/addtocart/{id}(id=${product.getId()})}" method="post" class="d-flex">
+                        <form th:action="@{/addtocart/{id}(id=${product.getId()})}" method="post" class="d-flex add-to-cart_form">
                             <div class="form-group flex-grow-1">
                                 <input type="number" min="0" value="0" class="form-control" id="quantity"
                                        name="quantity" th:max="${product.getInStock()}"

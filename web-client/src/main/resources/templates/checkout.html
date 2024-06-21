@@ -57,7 +57,7 @@
                 <!-- Card Number -->
                 <div class="mb-3">
                     <label for="cardNumber" class="form-label">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" maxlength="19"
+                    <input type="text" class="form-control input-field_checkout" id="cardNumber" name="cardNumber" maxlength="19"
                            pattern="\d{4} \d{4} \d{4} \d{4}"
                            title="Please enter a valid credit card number."
                            inputmode="numeric"
@@ -66,14 +66,14 @@
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
+                    <input type="email" class="form-control input-field_checkout" id="email" name="email"
                            title="Please enter a valid email address."
                            required>
                 </div>
                 <!-- Name -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" maxlength="50"
+                    <input type="text" class="form-control input-field_checkout" id="name" name="name" maxlength="50"
                            pattern="[A-Za-z]+"
                            title="Please enter a valid name using only letters."
                            required>
@@ -81,7 +81,7 @@
                 <!-- Surname -->
                 <div class="mb-3">
                     <label for="surname" class="form-label">Surname</label>
-                    <input type="text" class="form-control" id="surname" name="surname" maxlength="50"
+                    <input type="text" class="form-control input-field_checkout" id="surname" name="surname" maxlength="50"
                            pattern="[A-Za-z]+"
                            title="Please enter a valid surname using only letters."
                            required>
@@ -89,19 +89,19 @@
                 <!-- CCV -->
                 <div class="mb-3">
                     <label for="ccv" class="form-label">CCV</label>
-                    <input type="text" class="form-control" id="ccv" name="ccv" maxlength="4"
+                    <input type="text" class="form-control input-field_checkout" id="ccv" name="ccv" maxlength="4"
                            pattern="\d{3,4}"
                            title="Please enter a valid CCV (3 or 4 digits)."
                            inputmode="numeric"
                            required>
                 </div>
                 <!-- Confirm Button -->
-                <button type="submit" class="btn btn-primary">Confirm</button>
+                <button type="submit" class="btn btn-primary confirm-button_checkout">Confirm</button>
             </form>
         </div>
 
-        <h2>Your Order</h2>
-        <h3 th:text="${'Bag Total: ' + total + '$'}"></h3>
+        <h2 class="your-order-header_checkout" >Your Order</h2>
+        <h3 class="bag-total_checkout" th:text="${'Bag Total: ' + total + '$'}"></h3>
         <div th:each="product: ${products}">
             <a th:href="@{/product/{id}(id=${product.key.getId()})}">
                 <div class="product">

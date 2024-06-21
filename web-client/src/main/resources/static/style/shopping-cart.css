@@ -12,6 +12,17 @@
 }
 
 @media(max-width: 1000px) {
+    .header_shopping-cart {
+        font-size: 60px;
+    }
+    .bag-total_shopping-cart {
+        font-size: 45px;
+    }
+    .container div .checkout-button_shopping-cart {
+        font-size: 35px !important;
+        width: 50%;
+        margin-left: 25% !important;
+    }
     .product-body_shopping-cart {
         overflow: scroll;
         height: 350px;

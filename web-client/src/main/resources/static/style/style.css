@@ -15,13 +15,23 @@ html, body {
 
 @media (max-width: 1199px) {
     .company_name {
-        font-size: 60px;
+        font-size: 85px;
     }
     .side_panel {
         background-color: rgb(237, 237, 237) !important;
     }
     .bx-menu {
+        font-size: 70px;
+    }
+    .product-name {
         font-size: 50px;
+    }
+    .product-price {
+        font-size: 40px;
+        font-weight: lighter;
+    }
+    .card-body .add-to-cart_form {
+        display: none !important;
     }
     .ordered {
         display: none;
@@ -45,10 +55,13 @@ html, body {
     }
     .sidebar_close {
         margin-right: 95% !important;
-        font-size: 70px !important;
+        font-size: 90px !important;
     }
     .ordered_flex {
         justify-content: center;
+    }
+    .ordered_mobile .ordered_flex .col-md-4 .card_small p {
+        font-size: 40px;
     }
     .ordered_mobile h2 {
         font-size: 60px !important;
@@ -61,7 +74,7 @@ html, body {
 @media (max-width: 1000px) {
     .mt-4 .col-md-4 {
         flex: 0 0 auto !important;
-        width: 50% !important;
+        width: 100% !important;
     }
 }
 
