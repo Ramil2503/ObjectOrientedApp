@@ -24,9 +24,9 @@ values ('MacBook Pro 14', 'Lorem ipsum dolor sit amet, consectetur adipiscing el
 ;
 
 -- Inserting orders
-insert into "orders" (user_name) values ('user');
-insert into "orders" (user_name) values ('jane_smith');
-insert into "orders" (user_name) values ('alice_wonderland');
+insert into "orders" (user_name) values ('ramil');
+insert into "orders" (user_name) values ('tomcruise62');
+insert into "orders" (user_name) values ('messi1987');
 
 -- Inserting order items
 -- Replace the product IDs and quantities with actual existing products and desired quantities
