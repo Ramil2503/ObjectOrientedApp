@@ -74,4 +74,14 @@ public class WebController {
             return "redirect:/"; // Fallback if the Referer header is not present
         }
     }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        return "logout";
+    }
 }

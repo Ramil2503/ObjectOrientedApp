@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log out</title>
+    <link rel="stylesheet" th:href="@{/style/logout.css}"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-logout" th:action="@{logout}" method="post">
+        <h2 class="form-logout-heading">Are you sure you want to log out?</h2>
+        <div>
+            <button class="log-out-button_logout" type="submit">Log out</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
