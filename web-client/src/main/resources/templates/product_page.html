@@ -68,9 +68,9 @@
                         <form th:action="@{/addtocart/{id}(id=${product.getId()})}" method="post"
                               class="d-flex">
                             <div class="form-group flex-grow-1">
-                                <input type="number" min="0" value="0" class="add-to-cart-input_product-page form-control" id="quantity"
+                                <input type="number" min="1" class="add-to-cart-input_product-page form-control" id="quantity"
                                        name="quantity" th:max="${product.getInStock()}"
-                                       placeholder="Количество" required>
+                                       placeholder="Quantity" required>
                             </div>
                             <button type="submit" class="add-to-cart-btn_product-page btn btn-primary ms-2">Add to cart</button>
                         </form>
