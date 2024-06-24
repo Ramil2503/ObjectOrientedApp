@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
     private final AdminService adminService;
+    private final WebService webService;
 
     @GetMapping
     public String adminHomePage() {
-        return "admin";
+        return "redirect:/admin/products";
     }
 
     @GetMapping("/products")
-    public String productsPage() {
+    public String productsPage(Model model) {
+        model.addAttribute("products", webService.getAllProducts());
         return "admin_products";
     }
 

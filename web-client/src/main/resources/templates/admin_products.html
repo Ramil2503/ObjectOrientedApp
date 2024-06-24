@@ -30,8 +30,25 @@
 
     <div id="container" class="container mt-5">
         <a href="/admin"><h1 class="company_name text-center butterfly">Abracadabra</h1></a>
-        <a href="/admin"><h3>admin panel</h3></a>
+        <a href="/admin"><h3 class="header_admin">admin panel &mdash; PRODUCTS</h3></a>
 
+        <div class="row mt-4">
+            <!-- Используем Thymeleaf для перебора списка товаров -->
+            <div class="col-md-4 mb-4 product_card" th:each="product: ${products}">
+                <div class="card">
+                    <a th:href="@{/product/{id}(id=${product.getId()})}">
+                        <img th:src="'/' + ${'assets/' + product.getId()} + '.jpg'" class="card-img-top product-image"
+                             alt="Product Image">
+                    </a>
+                    <div class="card-body">
+                        <a th:href="@{/product/{id}(id=${product.getId()})}">
+                            <h5 class="card-title text-center product-name" th:text="${product.name}"></h5>
+                            <h5 class="card-title text-center product-price" th:text="${product.price + '$'}"></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

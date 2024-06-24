@@ -12,3 +12,9 @@
 .admin_orders-products_list {
     font-weight: lighter;
 }
+
+@media (max-width: 1000px) {
+    .header_admin {
+        font-size: 45px;
+    }
+}
