@@ -17,4 +17,12 @@
     .header_admin {
         font-size: 45px;
     }
+
+    .admin_orders-customer_name {
+        font-size: 45px;
+    }
+
+    .admin_orders-products_list {
+        font-size: 30px;
+    }
 }

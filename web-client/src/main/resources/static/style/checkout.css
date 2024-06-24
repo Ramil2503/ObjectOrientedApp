@@ -17,7 +17,8 @@
         margin-left: 0;
     }
     .input-field_checkout {
-        line-height: 3.5 !important;
+        font-size: 35px !important;
+        line-height: 2.5 !important;
     }
     .confirm-button_checkout {
         font-size: 35px !important;
