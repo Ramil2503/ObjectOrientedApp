@@ -1,0 +1,19 @@
+.input-image-add-product_admin {
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .form-add-product_admin {
+        font-size: 40px;
+    }
+
+    .input-add-product_admin {
+        font-size: 35px !important;
+    }
+
+    .add-product-button_admin {
+        font-size: 35px !important;
+        width: 50%;
+        margin-left: 25%;
+    }
+}
