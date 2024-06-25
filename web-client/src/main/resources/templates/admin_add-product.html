@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Add Product</title>
     <link rel="stylesheet" th:href="@{/style/style.css}"/>
     <link rel="stylesheet" th:href="@{/style/admin.css}"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -30,37 +30,35 @@
 
     <div id="container" class="container mt-5">
         <a href="/admin"><h1 class="company_name text-center butterfly">Abracadabra</h1></a>
-        <div class="header-container_admin">
-            <a href="/admin"><h3 class="header_admin">admin panel &mdash; PRODUCTS</h3></a>
-            <a class="add-product-button_admin" href="/admin/add-product"><i class='bx bx-plus'></i>Add Product</a>
-        </div>
+        <a href="/admin"><h3 class="header_admin">admin panel &mdash; ADD PRODUCT</h3></a>
 
-        <div class="row mt-4">
-            <!-- Используем Thymeleaf для перебора списка товаров -->
-            <div class="col-md-4 mb-4 product_card" th:each="product: ${products}">
-                <div class="card">
-                    <a th:href="@{/product/{id}(id=${product.getId()})}">
-                        <img th:src="'/' + ${'assets/' + product.getId()} + '.jpg'" class="card-img-top product-image"
-                             alt="Product Image">
-                    </a>
-                    <div class="card-body">
-                        <a th:href="@{/product/{id}(id=${product.getId()})}">
-                            <h5 class="card-title text-center product-name" th:text="${product.name}"></h5>
-                            <h5 class="card-title text-center product-price" th:text="${product.price + '$'}"></h5>
-                        </a>
-                    </div>
-                </div>
+        <form th:action="@{/admin/add-product}" method="post" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter product name" required>
             </div>
-        </div>
+            <div class="form-group mt-3">
+                <label for="description">Product Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
+            </div>
+            <div class="form-group mt-3">
+                <label for="price">Product Price</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter product price" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="stock">Stock Quantity</label>
+                <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter stock quantity" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="image">Upload Image</label>
+                <input type="file" id="image" name="image" accept="image/*" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+        </form>
     </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
-        crossorigin="anonymous"></script>
+
 <script type="text/javascript" th:src="@{/js/sidebar_admin.js}"></script>
 </body>
 </html>

@@ -74,4 +74,10 @@ public class ProductService {
     public void deleteProductShoppingCart(String userName, Long id) {
         shoppingCart.deleteProduct(userName, id);
     }
+
+    @TrackUserAction
+    public Long addProduct(Product product) {
+        Product savedProduct = productRepository.save(product);
+        return savedProduct.getId();
+    }
 }

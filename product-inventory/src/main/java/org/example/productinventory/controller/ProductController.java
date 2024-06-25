@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Map;
@@ -70,5 +71,11 @@ public class ProductController {
     public ResponseEntity<Void> test() {
         System.out.println(orderService.findAllOrdersOfUser("ramil"));
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("add-product")
+    public ResponseEntity<Long> addProduct(@RequestBody Product product) {
+        Long productId = productService.addProduct(product);
+        return ResponseEntity.ok(productId);
     }
 }
