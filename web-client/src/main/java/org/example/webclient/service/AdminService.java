@@ -60,7 +60,7 @@ public class AdminService {
     public void saveImage(MultipartFile image, Long productId) {
         try {
             byte[] bytes = image.getBytes();
-            Path path = Paths.get("web-client/src/main/resources/static/assets/" + productId + ".jpg");
+            Path path = Paths.get("src/main/resources/static/assets/" + productId + ".jpg");
             Files.write(path, bytes);
         } catch (IOException e) {
             e.printStackTrace();
