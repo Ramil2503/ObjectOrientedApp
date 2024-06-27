@@ -25,7 +25,7 @@
                     <!-- Accessing the product from the map entry -->
                     <div class="card_small">
                         <!-- Use entry.key to access the product -->
-                        <img th:src="'/' + ${'assets/' + entry.key.getId()} + '.jpg'" class="card-img-top product-image"
+                        <img th:src="'https://storage.cloud.google.com/image-service-abracadabra/' + ${'images/' + entry.key.getId()} + '.jpg'" class="card-img-top product-image"
                              alt="Product Image">
                         <!-- Use entry.value to access the quantity -->
                         <a class="delete-button-ordered" th:href="@{/delete-product-shopping-cart/{id}(id=${entry.key.getId()})}"><i class='bx bx-x-circle'></i></a>
@@ -54,7 +54,7 @@
 
         <div th:object="${product}">
             <div class="product_product-page">
-                <img th:src="'/' + ${'assets/' + product.getId()} + '.jpg'" class="card-img-top product-image"
+                <img th:src="'https://storage.cloud.google.com/image-service-abracadabra/' + ${'images/' + product.getId()} + '.jpg'" class="card-img-top product-image"
                      alt="Product Image">
                 <div class="product-body_product-page">
                     <div>
@@ -86,7 +86,7 @@
                 <!-- Accessing the product from the map entry -->
                 <div class="card_small">
                     <!-- Use entry.key to access the product -->
-                    <img th:src="'/' + ${'assets/' + entry.key.getId()} + '.jpg'" class="card-img-top product-image"
+                    <img th:src="'https://storage.cloud.google.com/image-service-abracadabra/' + ${'images/' + entry.key.getId()} + '.jpg'" class="card-img-top product-image"
                          alt="Product Image">
                     <!-- Use entry.value to access the quantity -->
                     <a class="delete-button-ordered" th:href="@{/delete-product-shopping-cart/{id}(id=${entry.key.getId()})}"><i class='bx bx-x-circle'></i></a>
