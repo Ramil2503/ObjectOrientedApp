@@ -5,10 +5,7 @@ import org.example.webclient.service.AdminService;
 import org.example.webclient.service.WebService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -47,6 +44,12 @@ public class AdminController {
                              @RequestParam("stock") Integer inStock,
                              @RequestParam("image") MultipartFile image) {
         adminService.addProduct(name, description, price, inStock, image);
+        return "redirect:/admin/products";
+    }
+
+    @GetMapping("delete-product/{id}")
+    public String deleteProduct(@PathVariable("id") Long id) {
+        adminService.deleteProduct(id);
         return "redirect:/admin/products";
     }
 }

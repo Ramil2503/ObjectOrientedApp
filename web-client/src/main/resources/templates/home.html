@@ -58,7 +58,7 @@
             <div class="col-md-4 mb-4 product_card" th:each="product: ${products}">
                 <div class="card">
                     <a th:href="@{/product/{id}(id=${product.getId()})}">
-                        <img th:src="'/' + ${'assets/' + product.getId()} + '.jpg'" class="card-img-top product-image"
+                        <img th:src="'https://storage.cloud.google.com/image-service-abracadabra/' + ${'images/' + product.getId()} + '.jpg'" class="card-img-top product-image"
                              alt="Product Image">
                     </a>
                     <div class="card-body">

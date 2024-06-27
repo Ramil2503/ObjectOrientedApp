@@ -17,11 +17,11 @@ import java.util.Map;
 
 @Service
 public class AdminService {
-
+    private final ImageService imageService;
     private final Storage storageApi;
 
-    public AdminService(Storage storageApi) {
-        this.storageApi = storageApi;
+    public AdminService(Storage storageApi, ImageService imageService) {
+        this.storageApi = storageApi; this.imageService = imageService;
     }
 
     // Map<String, Map<Product, Integer>>
@@ -58,12 +58,18 @@ public class AdminService {
     }
 
     public void saveImage(MultipartFile image, Long productId) {
-        try {
-            byte[] bytes = image.getBytes();
-            Path path = Paths.get("web-client/src/main/resources/static/assets/" + productId + ".jpg");
-            Files.write(path, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            byte[] bytes = image.getBytes();
+//            Path path = Paths.get("web-client/src/main/resources/static/assets/" + productId + ".jpg");
+//            Files.write(path, bytes);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        imageService.saveImage(image, productId);
+    }
+
+    public void deleteProduct(Long id) {
+        // TODO: implement delete product from product inventory
+        imageService.deleteImage(id);
     }
 }
