@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 @Service
@@ -70,6 +66,16 @@ public class AdminService {
 
     public void deleteProduct(Long id) {
         // TODO: implement delete product from product inventory
+        RestTemplate template = new RestTemplate();
+
+        String url = String.format("%s/delete-product/%d", storageApi.getBasicUri(), id);
+
+        template.exchange(
+                url,
+                HttpMethod.DELETE,
+                null,
+                Void.class
+        );
         imageService.deleteImage(id);
     }
 }

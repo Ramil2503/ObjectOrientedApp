@@ -48,6 +48,9 @@
                             <h5 class="card-title text-center product-name" th:text="${product.name}"></h5>
                             <h5 class="card-title text-center product-price" th:text="${product.price + '$'}"></h5>
                         </a>
+                        <a th:href="@{/admin/delete-product/{id}(id=${product.getId()})}" class="d-flex">
+                            <button class="btn btn-primary ms-2 delete-product-button_admin">Delete Product</button>
+                        </a>
                     </div>
                 </div>
             </div>

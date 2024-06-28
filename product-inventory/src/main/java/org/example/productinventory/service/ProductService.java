@@ -80,4 +80,9 @@ public class ProductService {
         Product savedProduct = productRepository.save(product);
         return savedProduct.getId();
     }
+
+    @TrackUserAction
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
 }

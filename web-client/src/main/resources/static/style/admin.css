@@ -29,6 +29,11 @@
     font-weight: lighter;
 }
 
+.card-body a .delete-product-button_admin {
+    width: 70%;
+    margin-left: 15% !important;
+}
+
 @media (max-width: 1000px) {
     .header_admin {
         font-size: 45px;
@@ -50,5 +55,10 @@
     .add-product-button_admin {
         font-size: 30px;
         width: 50%;
+    }
+
+    .card-body a .delete-product-button_admin {
+        font-size: 35px;
+        border-radius: 20px;
     }
 }
