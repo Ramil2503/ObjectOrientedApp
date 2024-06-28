@@ -21,3 +21,8 @@ spring:
 api:
   storage:
     basicUri: ${API_PRODUCT_INVENTORY_URI:http://localhost:8082/}
+
+google:
+  cloud:
+    credentials:
+      filePath: ${GOOGLE_APPLICATION_CREDENTIALS:etc/secrets/key.json}

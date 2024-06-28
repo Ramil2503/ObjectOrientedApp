@@ -7,6 +7,7 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import org.example.webclient.model.api.GoogleCloudProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,10 +20,10 @@ public class ImageService {
     private final Storage storage;
     private final String bucketName = "image-service-abracadabra";
 
-    public ImageService() {
+    public ImageService(GoogleCloudProperties googleCloudProperties) {
         // Initialize the Storage client with the service account credentials
         try {
-            Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("/etc/secrets/key.json"));
+            Credentials credentials = GoogleCredentials.fromStream(new FileInputStream(googleCloudProperties.getFilePath()));
             this.storage = StorageOptions.newBuilder()
                     .setCredentials(credentials)
                     .build()
