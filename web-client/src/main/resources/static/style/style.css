@@ -118,7 +118,8 @@ body {
 
 .product_card .card img {
     width: 100%;
-    object-fit: contain;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .container a {
@@ -151,6 +152,8 @@ body {
 
 .card_small, .card_small img {
     border-radius: 10px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .card, .card img {
