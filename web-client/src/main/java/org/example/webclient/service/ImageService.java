@@ -22,7 +22,7 @@ public class ImageService {
     public ImageService() {
         // Initialize the Storage client with the service account credentials
         try {
-            Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("key.json"));
+            Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("/etc/secrets/key.json"));
             this.storage = StorageOptions.newBuilder()
                     .setCredentials(credentials)
                     .build()
