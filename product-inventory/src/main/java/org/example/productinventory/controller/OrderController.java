@@ -1,7 +1,6 @@
 package org.example.productinventory.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.productinventory.model.Orders;
 import org.example.productinventory.model.Product;
 import org.example.productinventory.service.OrderService;
 import org.example.productinventory.service.ProductService;
@@ -16,7 +15,7 @@ import java.util.Map;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/orders")
-public class OrdersController {
+public class OrderController {
     ProductService productService;
     OrderService orderService;
 

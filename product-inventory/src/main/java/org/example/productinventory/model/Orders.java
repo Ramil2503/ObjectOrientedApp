@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "\"ORDERS\"") // Add this line to escape the table name
+@Table(name = "\"ORDERS\"")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
