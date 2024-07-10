@@ -64,19 +64,13 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<Void> test() {
-        System.out.println(orderService.findAllOrdersOfUser("ramil"));
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("add-product")
+    @PostMapping("/add-product")
     public ResponseEntity<Long> addProduct(@RequestBody Product product) {
         Long productId = productService.addProduct(product);
         return ResponseEntity.ok(productId);
     }
 
-    @DeleteMapping("delete-product/{id}")
+    @DeleteMapping("/delete-product/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
