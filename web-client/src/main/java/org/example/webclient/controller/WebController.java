@@ -19,11 +19,10 @@ public class WebController {
     }
 
     @PostMapping("/addtocart/{id}")
-    public String addToCart(@PathVariable Long id, @RequestParam int quantity, @RequestHeader(value = "Referer", required = false) String referer, Model model) {
+    public String addToCart(@PathVariable Long id, @RequestParam int quantity, @RequestHeader(value = "Referer", required = false) String referer) {
         if (quantity != 0) {
             webService.addToShoppingCart(id, quantity);
         }
-        model.addAttribute("products", webService.getAllProducts());
         if (referer != null) {
             return "redirect:" + referer;
         } else {
@@ -76,12 +75,12 @@ public class WebController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login() {
         return "login";
     }
 
     @GetMapping("/logout")
-    public String logout(Model model) {
+    public String logout() {
         return "logout";
     }
 }
