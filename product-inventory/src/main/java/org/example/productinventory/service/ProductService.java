@@ -85,4 +85,11 @@ public class ProductService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+    @TrackUserAction
+    public void buyProductUpdateStock(Long productId, int quantityBought) {
+        Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("Invalid product ID"));
+        product.setInStock(product.getInStock() - quantityBought);
+        productRepository.save(product);
+    }
 }

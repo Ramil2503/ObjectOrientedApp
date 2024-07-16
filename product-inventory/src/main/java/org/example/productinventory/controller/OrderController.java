@@ -26,6 +26,7 @@ public class OrderController {
         for (Map.Entry<Product, Integer> entry : productsInCart.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
+            productService.buyProductUpdateStock(product.getId(), quantity);
             orderService.save(username, product.getId(), quantity);
         }
 
