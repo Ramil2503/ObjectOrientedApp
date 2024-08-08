@@ -67,14 +67,14 @@
                             <h5 class="card-title text-center product-price" th:text="${product.price + '$'}"></h5>
                         </a>
                         <!-- Форма для ввода количества товара и кнопка "Купить" -->
-                        <form th:action="@{/addtocart/{id}(id=${product.getId()})}" method="post" class="d-flex add-to-cart_form">
-                            <div class="form-group flex-grow-1">
-                                <input type="number" min="1" class="form-control" id="quantity"
-                                       name="quantity" th:max="${product.getInStock()}"
-                                       placeholder="Quantity" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary ms-2">Add to cart</button>
-                        </form>
+<!--                        <form th:action="@{/addtocart/{id}(id=${product.getId()})}" method="post" class="d-flex add-to-cart_form">-->
+<!--                            <div class="form-group flex-grow-1">-->
+<!--                                <input type="number" min="1" class="form-control" id="quantity"-->
+<!--                                       name="quantity" th:max="${product.getInStock()}"-->
+<!--                                       placeholder="Quantity" required>-->
+<!--                            </div>-->
+<!--                            <button type="submit" class="btn btn-primary ms-2">Add to cart</button>-->
+<!--                        </form>-->
                     </div>
                 </div>
             </div>
